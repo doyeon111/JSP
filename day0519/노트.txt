@@ -1,0 +1,10 @@
+create table members(
+	id varchar2(20) primary key,
+	password varchar2(20),
+	email varchar2(50),
+	signuptime date
+);
+
+--------------------------------------------------------------------
+
+select nvl(max(bookid), 0)+1 from book;
