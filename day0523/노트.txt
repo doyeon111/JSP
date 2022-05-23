@@ -1,0 +1,31 @@
+
+게시판(board)
+
+글번호	no			number			pk
+글제목	title		varchar2(50)
+작성자	writer		varchar2(20)
+암호		pwd			varchar2(20)
+글내용	content		varchar2(3000)
+작성일	regdate		date
+조회수	hit			number
+
+
+create table board(
+	no number primary key,
+	title varchar2(50),
+	writer varchar2(20),
+	pwd varchar2(20),
+	content varchar2(3000),
+	regdate date,
+	hit number
+);
+
+
+---------------------------------------------------------------------------
+
+DAO의 메소드마다 매번 Connection를 생성하고 또 close를 일일이 하는 것은 번거로운 일이다.
+그래서 Connection을 생성해서 반환해주는 메소드와 또, close를 해주는 메소드를 따로 만들어두면 일이 좀 수월해질 것 같다.
+
+ConnectionProvider
+	getConnection
+	close
