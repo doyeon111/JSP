@@ -1,0 +1,10 @@
+create table goods(
+	no number primary key,
+	item varchar2(30),
+	qty number,
+	price number,
+	fname varchar2(50)
+);
+
+VO를 만들고 dao를 만들어보자.
+(추가, 수정, 삭제, 조회를 위한 메소드로 구성)
