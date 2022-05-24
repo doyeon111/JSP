@@ -1,0 +1,78 @@
+
+게시판(board)
+
+글번호	no			number			pk
+글제목	title		varchar2(50)
+작성자	writer		varchar2(20)
+암호		pwd			varchar2(20)
+글내용	content		varchar2(3000)
+작성일	regdate		date
+조회수	hit			number
+
+
+create table board(
+	no number primary key,
+	title varchar2(50),
+	writer varchar2(20),
+	pwd varchar2(20),
+	content varchar2(3000),
+	regdate date,
+	hit number
+);
+
+
+---------------------------------------------------------------------------
+
+DAO의 메소드마다 매번 Connection를 생성하고 또 close를 일일이 하는 것은 번거로운 일이다.
+그래서 Connection을 생성해서 반환해주는 메소드와 또, close를 해주는 메소드를 따로 만들어두면 일이 좀 수월해질 것 같다.
+
+ConnectionProvider
+	getConnection
+	close
+	
+	
+---------------------------------------------------------------------------
+
+
+board 테이블에 파일이름을 저장할 컬럼을 추가
+
+fname varchar2(50)
+
+alter table board add fname varchar2(50);
+
+-----------------------------------------------------------------------------
+
+파일 출력
+
+<form action="InsertBoard" method="post" enctype="multipart/form-data">
+<input type="file" name="fname"> ==> 파일이름이 아닌 파일내용이 전달됨.
+
+
+http://www.servlets.com/cos/ ==> 파일과 함께 데이터를 전달받기 위한 별도의 클래스 필요
+
+
+------------------------------------------------------------------------------
+
+//파일과 함께 클라이언트가 요청한 데이터를 받아오기 위해서는 다음의 객체를 생성한다.
+MultipartRequest multi = new MultipartRequest(request, //request
+				"c:/images", //파일을 저장할 경로
+				1024*1024*5,  //파일의 최대 크기
+				"utf-8", //파일의 인코딩
+				new DefaultFileRenamePolicy()); //파일 중복처리 
+
+
+-----------------------------------------------------------------------
+
+파일을 저장할 경로를 c:로 설정하게 되면 서버에 데이터를 기록하는 용도로는 가능하지만 
+만약에, 그 파일이 이미지 파일이어서 클라이언트에게 보여줄 용도라면 c: 드라이브에 저장하게 되면 클라이언트에게 보여줄 수 없다.
+만약에, 업로드한 파일을 다시 클라이언트에게 보여줄 목적이라면 현재 프로젝트를 기준으로 폴더를 만들고 거기에 업로드 해야 한다.
+
+이 때에 현재 프로젝트를 기준으로 폴더를 만들고 그 폴더의 실제 경로를 알아오기 위해서는 request.getRealpath 메소드를 이용한다.
+
+
+
+
+
+
+
+
