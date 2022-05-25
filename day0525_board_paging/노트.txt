@@ -1,0 +1,119 @@
+select * from board order by no;
+
+select rownum n, no, title, writer, pwd, content, regdate, hit, fname
+from(select * from board order by no);
+
+
+select no, title, writer, pwd, content, regdate, hit, fname
+from (select rownum n, no, title, writer, pwd, content, regdate, hit, fname
+		from(select * from board order by no)) where n between 11 and 20;
+		
+----------------------------------------------------------------------------------
+
+select rownum, title from board order by title;
+== 행번호 먼저 붙인 다음 정렬해요
+
+정렬을 먼저 한 다음에 행번호를 붙이고 싶어요
+==> 정렬한 결과를 서브쿼리로 놓고 행번호를 붙여야해요
+
+select title from board order by title;
+
+select rownum, title
+from (select title from board order by title);
+
+행번호가 5번째에서 9번째 사이의 레코드를 검색
+select rownum n, title
+from (select title from board order by title)
+where rownum between 5 and 9;
+
+선택된 레코드가 없습니다.
+
+==> 행번호가 중간에 있는 레코드를 검색할 수 없다!
+
+행번호에 애칭을 주어
+그것을 가상의 테이블로 또 하나의 서브쿼리를 만들어야 한다.
+
+select no, title, writer, pwd, content, regdate, hit, fname
+from ( select rownum n, no, title, writer, pwd, content, regdate, hit, fname
+from (select * from board order by no))
+where n between 5 and 9;
+
+
+정렬해서 행번호를 붙여서 일부분 검색
+
+
+-------------------------------------------------------------------------------------------------------
+
+답변형 게시판
+
+b_ref 속성 추가 	: 서로 관련있는 글임을 나타내기 위해서 사용
+	- 새글 ==> 글번호와 동일하게 설정
+	- 답글 ==> 부모글의 b_ref와 동일하게 설정
+
+
+b_step 속성		: 서로 관련있는 글 중에서 글을 출력하는 순서를 위해서 사용
+	- 새글 ==> 0으로 설정
+	- 답글 ==> 이미 달려있는 답글들의 b_step은 1씩 증가시켜야함.
+			  나는 부모글의 b_step + 1 로 설정
+			  
+			  
+			  
+b_level 속성		: 답글의 깊이를 위해서 사용
+	- 새글 ==> 0으로 설정
+	- 답글 ==> 부모글의 b_level + 1을 설정
+
+(부모글)		
+no 	title	b_ref	b_step				b_level(답글의 깊이)
+1	a		1		0 (부모일 시 0)		0	
+2	b		2		0					0					<- 답글
+3	c		3		0					0
+ 
+4	b1		2		4					1		
+5	b2		2		2					1		<----
+6	b3		2		1					1
+
+7	b21		2		3					2
+ 
+ 
+----------------------------------------- 
+(답글)	(부모의번호)   (2번부모글에 대한 답글)
+4	bb		2		3(답글을 달면 +1)
+5	b1		2		2
+6	b2		2		1
+
+
+-------------------------------------------------------------------------------------------------------
+
+글번호	제목
+1		a
+2		b
+6		 b2
+7		  b3
+5		 b1
+4		 bb
+3		c
+
+
+
+---------------------------------------------------------------------------------------------------------
+
+alter table board add b_ref number;
+alter table board add b_step number;
+alter table board add b_level number;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
