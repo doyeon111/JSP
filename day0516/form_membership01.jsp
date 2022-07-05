@@ -33,7 +33,7 @@
 			<input type="text" maxlength="4" size="4" name="phone3"><br><br>
 			
 			성별:
-			<input type="radio" name="gender" value="남성">남
+			<input type="radio" name="gender" value="남성">남 
 			<input type="radio" name="gender" value="여성">여<br><br>
 			
 			취미:
