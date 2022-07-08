@@ -9,4 +9,4 @@
 <body>
 	<img src="goods/ball1.jpg" width="100" height="100"> 
 </body>
-</html>
+</html> 
