@@ -17,4 +17,4 @@
 	
 	<img src="goods/<%=fname %>" width="<%=width %>" height="<%=height %>"> 
 </body>
-</html>
+</html> 
