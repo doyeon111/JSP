@@ -23,4 +23,4 @@
 		<input type="submit" value="신청" onclick="checkFun()">
 	</form>
 </body>
-</html>
+</html>  
