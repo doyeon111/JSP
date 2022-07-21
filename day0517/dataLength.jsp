@@ -23,7 +23,7 @@
 		document.loginForm.submit(); //모두 다 잘 입력하였으면 loginForm에 있는 submit으로 이동
 		
 	}
-</script>
+</script> 
 </head>
 <body>
 	<h2>아이디와 비밀번호 입력</h2>
