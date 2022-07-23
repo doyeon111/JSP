@@ -16,4 +16,4 @@
 비밀번호: <%=passwd %>
 <hr>
 </body>
-</html>
+</html> 
