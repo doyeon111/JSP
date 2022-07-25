@@ -30,7 +30,7 @@
 			</select>
 			<input type="text" maxlength="3" size="3" name="p_phone1">-
 			<input type="text" maxlength="4" size="4" name="p_phone2">-
-			<input type="text" maxlength="4" size="4" name="p_phone3"><br><br>
+			<input type="text" maxlength="4" size="4" name="p_phone3"><br><br> 
 			
 			성별:
 			<input type="radio" name="p_gender" value="남성">남
