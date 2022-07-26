@@ -17,4 +17,4 @@
 추천도서: <%=book %><br>
 평점: <%=grade %>
 </body>
-</html>
+</html> 
