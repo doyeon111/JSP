@@ -32,7 +32,7 @@
 		평점:
 		<hr>
 		<input type="radio" name="grade" value="♥♥♥♥♥">♥♥♥♥♥<br>
-		<input type="radio" name="grade" value="♥♥♥♥♡">♥♥♥♥♡<br>
+		<input type="radio" name="grade" value="♥♥♥♥♡">♥♥♥♥♡<br> 
 		<input type="radio" name="grade" value="♥♥♥♡♡">♥♥♥♡♡<br>
 		<input type="radio" name="grade" value="♥♥♡♡♡">♥♥♡♡♡<br>
 		<input type="radio" name="grade" value="♥♡♡♡♡">♥♡♡♡♡<br> 
