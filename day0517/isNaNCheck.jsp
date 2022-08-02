@@ -27,7 +27,7 @@
 			return false;
 		}
 		
-		f.submit();
+		f.submit(); 
 		
 	}
 </script>
