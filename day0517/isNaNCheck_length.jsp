@@ -60,5 +60,5 @@
 		<input type="password" name="passwd"><br><br>
 		<input type="submit" value="신청하기" onclick="pro()">
 	</form>
-</body>
+</body> 
 </html>
